@@ -24,7 +24,7 @@ import (
 	"github.com/gohugoio/hugo/common/urls"
 	"github.com/gohugoio/hugo/deps"
 	_errors "github.com/pkg/errors"
-	"github.com/russross/blackfriday"
+	"github.com/jakejarvis/blackfriday"
 	"github.com/spf13/cast"
 )
 

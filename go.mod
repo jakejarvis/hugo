@@ -24,6 +24,7 @@ require (
 	github.com/gorilla/websocket v1.4.0
 	github.com/hashicorp/go-immutable-radix v1.0.0
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
+	github.com/jakejarvis/blackfriday v0.0.0-20191006152705-b6ce669af12a
 	github.com/jdkato/prose v1.1.0
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/kyokomi/emoji v1.5.1

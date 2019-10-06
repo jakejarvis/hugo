@@ -31,9 +31,9 @@ import (
 	"github.com/chaseadamsio/goorgeous"
 	bp "github.com/gohugoio/hugo/bufferpool"
 	"github.com/gohugoio/hugo/config"
+	"github.com/jakejarvis/blackfriday"
 	"github.com/miekg/mmark"
 	"github.com/mitchellh/mapstructure"
-	"github.com/russross/blackfriday"
 	jww "github.com/spf13/jwalterweatherman"
 
 	"strings"
@@ -113,6 +113,7 @@ type BlackFriday struct {
 	HrefTargetBlank       bool
 	NofollowLinks         bool
 	NoreferrerLinks       bool
+	NoopenerLinks         bool
 	SmartDashes           bool
 	LatexDashes           bool
 	TaskLists             bool
@@ -131,6 +132,7 @@ func newBlackfriday(config map[string]interface{}) *BlackFriday {
 		"hrefTargetBlank":       false,
 		"nofollowLinks":         false,
 		"noreferrerLinks":       false,
+		"noopenerLinks":         false,
 		"smartDashes":           true,
 		"latexDashes":           true,
 		"plainIDAnchors":        true,
@@ -290,6 +292,10 @@ func (c *ContentSpec) getHTMLRenderer(defaultFlags int, ctx *RenderingContext) b
 
 	if ctx.Config.NoreferrerLinks {
 		htmlFlags |= blackfriday.HTML_NOREFERRER_LINKS
+	}
+
+	if ctx.Config.NoopenerLinks {
+		htmlFlags |= blackfriday.HTML_NOOPENER_LINKS
 	}
 
 	if ctx.Config.SmartDashes {
