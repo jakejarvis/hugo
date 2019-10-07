@@ -19,7 +19,7 @@ import (
 
 	"github.com/gohugoio/hugo/config"
 	"github.com/miekg/mmark"
-	"github.com/russross/blackfriday"
+	"github.com/jakejarvis/blackfriday"
 )
 
 // HugoHTMLRenderer wraps a blackfriday.Renderer, typically a blackfriday.Html
