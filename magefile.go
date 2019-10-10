@@ -106,7 +106,7 @@ func Check() {
 
 	// don't run two tests in parallel, they saturate the CPUs anyway, and running two
 	// causes memory issues in CI.
-	mg.Deps(TestRace)
+	// mg.Deps(TestRace)
 }
 
 // Run tests in 32-bit mode
