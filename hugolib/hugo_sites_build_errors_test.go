@@ -3,7 +3,7 @@ package hugolib
 import (
 	"fmt"
 	"path/filepath"
-	"runtime"
+	// "runtime"
 	"strings"
 	"testing"
 
