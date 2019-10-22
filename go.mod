@@ -47,7 +47,7 @@ require (
 	github.com/spf13/nitro v0.0.0-20131003134307-24d7ef30a12d
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.4.0
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.4.0
 	github.com/tdewolff/minify/v2 v2.5.2
 	github.com/yosssi/ace v0.0.5
 	golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8
