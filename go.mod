@@ -14,7 +14,7 @@ require (
 	github.com/disintegration/imaging v1.6.1
 	github.com/dlclark/regexp2 v1.2.0 // indirect
 	github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385
-	github.com/fortytw2/leaktest v1.2.0
+	github.com/fortytw2/leaktest v1.3.0
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/gobwas/glob v0.2.3
 	github.com/gorilla/websocket v1.4.1
