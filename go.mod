@@ -37,7 +37,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.1
 	github.com/pelletier/go-toml v1.5.0 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/sanity-io/litter v1.1.0
+	github.com/sanity-io/litter v1.2.0
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/spf13/afero v1.2.2
 	github.com/spf13/cast v1.3.0
