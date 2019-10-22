@@ -1,6 +1,6 @@
 # Custom Hugo Extended fork for https://jarv.is/
 
-FROM golang:1.12-alpine AS builder
+FROM golang:1.13-alpine AS builder
 
 # CGO (and gcc/g++) required to build wellington/go-libsass
 ARG CGO=1
@@ -15,7 +15,7 @@ WORKDIR /go/src/github.com/gohugoio/hugo
 COPY . /go/src/github.com/gohugoio/hugo/
 
 RUN apk update && \
-    apk add --no-cache git gcc g++ musl-dev ca-certificates && \
+    apk add --no-cache git gcc g++ ca-certificates && \
     go get github.com/magefile/mage && \
     mage hugo && mage install && \
     rm -rf $GOPATH/src
