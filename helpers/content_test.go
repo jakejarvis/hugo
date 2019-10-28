@@ -21,8 +21,8 @@ import (
 
 	"github.com/spf13/viper"
 
-	"github.com/jakejarvis/blackfriday"
 	"github.com/miekg/mmark"
+	"github.com/russross/blackfriday"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

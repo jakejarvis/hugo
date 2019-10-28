@@ -20,7 +20,6 @@ require (
 	github.com/gorilla/websocket v1.4.1
 	github.com/hashicorp/go-immutable-radix v1.1.0
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
-	github.com/jakejarvis/blackfriday v0.0.0-20191006152705-b6ce669af12a
 	github.com/jdkato/prose v1.1.1
 	github.com/kyokomi/emoji v2.1.0+incompatible
 	github.com/magefile/mage v1.9.0
@@ -37,6 +36,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.1
 	github.com/pelletier/go-toml v1.5.0 // indirect
 	github.com/pkg/errors v0.8.1
+	github.com/russross/blackfriday v1.5.3-0.20190124082335-a477dd164691
 	github.com/sanity-io/litter v1.2.0
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/spf13/afero v1.2.2
@@ -59,6 +59,8 @@ require (
 )
 
 exclude github.com/chaseadamsio/goorgeous v2.0.0+incompatible
+
+replace github.com/russross/blackfriday => github.com/jakejarvis/blackfriday v0.0.0-20191006152705-b6ce669af12a
 
 replace github.com/markbates/inflect => github.com/markbates/inflect v0.0.0-20171215194931-a12c3aec81a6
 
