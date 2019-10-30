@@ -38,8 +38,6 @@ jobs:
         mage -v check
         mage -v hugo
         ./hugo version
-        ./hugo -s docs/
-        ./hugo --renderToMemory -s docs/
 
   docker:
     needs: [test]    # only run if tests succeed
