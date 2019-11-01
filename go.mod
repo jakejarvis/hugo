@@ -48,7 +48,7 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0
 	github.com/spf13/nitro v0.0.0-20131003134307-24d7ef30a12d
 	github.com/spf13/pflag v1.0.5
-	github.com/spf13/viper v1.4.0
+	github.com/spf13/viper v1.5.0
 	github.com/stretchr/testify v1.4.0
 	github.com/tdewolff/minify/v2 v2.5.2
 	github.com/yosssi/ace v0.0.5
