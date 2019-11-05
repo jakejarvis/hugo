@@ -8,7 +8,7 @@ require (
 	github.com/PuerkitoBio/purell v1.1.1
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/alecthomas/assert v0.0.0-20170929043011-405dbfeb8e38
-	github.com/alecthomas/chroma v0.6.8
+	github.com/alecthomas/chroma v0.6.9
 	github.com/bep/debounce v1.2.0
 	github.com/bep/gitmap v1.1.1
 	github.com/bep/go-tocss v0.6.0
