@@ -25,17 +25,16 @@ require (
 	github.com/jdkato/prose v1.1.1
 	github.com/kyokomi/emoji v2.1.0+incompatible
 	github.com/magefile/mage v1.9.0
-	github.com/magiconair/properties v1.8.1 // indirect
 	github.com/markbates/inflect v1.0.4
 	github.com/mattn/go-isatty v0.0.10
-	github.com/mattn/go-runewidth v0.0.5 // indirect
+	github.com/mattn/go-runewidth v0.0.6 // indirect
 	github.com/miekg/mmark v1.3.6
 	github.com/mitchellh/hashstructure v1.0.0
 	github.com/mitchellh/mapstructure v1.1.2
 	github.com/muesli/smartcrop v0.3.0
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/nicksnyder/go-i18n v1.10.1
-	github.com/olekukonko/tablewriter v0.0.1
+	github.com/olekukonko/tablewriter v0.0.2
 	github.com/pelletier/go-toml v1.6.0 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/russross/blackfriday v1.5.2
@@ -53,9 +52,9 @@ require (
 	github.com/tdewolff/minify/v2 v2.5.2
 	github.com/yosssi/ace v0.0.5
 	golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8
-	golang.org/x/net v0.0.0-20191028085509-fe3aa8a45271 // indirect
+	golang.org/x/net v0.0.0-20191109021931-daa7c04131f5 // indirect
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
-	golang.org/x/sys v0.0.0-20191029155521-f43be2a4598c // indirect
+	golang.org/x/sys v0.0.0-20191105231009-c1f44814a5cd // indirect
 	golang.org/x/text v0.3.2
 	gopkg.in/yaml.v2 v2.2.5
 )

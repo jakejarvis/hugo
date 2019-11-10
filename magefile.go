@@ -100,19 +100,11 @@ func Check() {
 		return
 	}
 
-	mg.Deps(Test386)
-
 	mg.Deps(Fmt, Vet)
 
 	// don't run two tests in parallel, they saturate the CPUs anyway, and running two
 	// causes memory issues in CI.
 	// mg.Deps(TestRace)
-}
-
-// Run tests in 32-bit mode
-// Note that we don't run with the extended tag. Currently not supported in 32 bit.
-func Test386() error {
-	return sh.RunWith(map[string]string{"GOARCH": "386"}, goexe, "test", "./...")
 }
 
 // Run tests
