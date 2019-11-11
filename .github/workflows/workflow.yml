@@ -1,65 +1,29 @@
-name: CI
+name: Test Auto-Release
 
 on:
-  pull_request: {}
   push:
     branches:
-    - master
+    - release-action
 
 jobs:
-  test:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        go: ['1.13.x', '1.12.x']
-      fail-fast: false
-    runs-on: ${{ matrix.os }}
-    env:
-      GOPROXY: https://proxy.golang.org
-      HUGO_BUILD_TAGS: extended
-      CI: true      # https://github.com/jakejarvis/hugo-custom/blob/f4706331e55d3c78d66a3df43e9c1a0bb58a3590/releaser/git_test.go#L69
+  release:
+    runs-on: ubuntu-16.04   # for compatibility
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-go@master
       with:
-        go-version: ${{ matrix.go }}
-        path: ./src/github.com/${{ github.repository }}
-    - name: Run tests
-      shell: bash     # force Git Bash shell on windows
-      timeout-minutes: 20
+        go-version: '1.13'
+    - run: go env 
+    - run: strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
+    - name: Build binary
       run: |
-        export GOPATH=$HOME/go        # https://github.com/actions/setup-go/issues/12
-        export GOBIN=$GOPATH/bin
-        export PATH=$PATH:$GOPATH
-        export PATH=$PATH:$GOBIN
-        go get github.com/magefile/mage
-        go mod download || true
-        mage -v test
-        mage -v check
-        mage -v hugo
-        ./hugo version
-
-  docker:
-    needs: [test]    # only run if tests succeed
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    runs-on: ubuntu-18.04
-    steps:
-    - uses: actions/checkout@master
+        go get -u github.com/magefile/mage
+        $(go env GOPATH)/bin/mage hugo
+        HUGO_BUILD_TAGS=extended $(go env GOPATH)/bin/mage install
+        cp $(go env GOPATH)/bin/hugo ./hugo-extended
+    - name: Make sure binary's OK
+      run: ./hugo-extended version
+    - uses: actions/upload-artifact@master
       with:
-        fetch-depth: 1
-    - name: Docker Hub & GitHub Registry login
-      run: |
-        echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u jakejarvis --password-stdin https://index.docker.io/v1/
-        echo ${{ secrets.GITHUB_PACKAGE_TOKEN }} | docker login docker.pkg.github.com -u jakejarvis --password-stdin
-    - name: Build images
-      run: |
-        docker build -t jakejarvis/hugo-custom:latest -f Dockerfile .
-        docker tag jakejarvis/hugo-custom:latest docker.pkg.github.com/jakejarvis/hugo-custom/hugo-custom:latest
-    - name: Push images
-      run: |
-        docker push jakejarvis/hugo-custom:latest
-        docker push docker.pkg.github.com/jakejarvis/hugo-custom/hugo-custom:latest
-    - name: Docker Hub & GitHub Registry logout
-      run: |
-        docker logout
-        docker logout docker.pkg.github.com
+        name: hugo-extended
+        path: ./hugo-extended

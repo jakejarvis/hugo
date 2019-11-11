@@ -24,7 +24,7 @@ const (
 	noGitLdflags = "-X $PACKAGE/common/hugo.buildDate=$BUILD_DATE"
 )
 
-var ldflags = "-X $PACKAGE/common/hugo.commitHash=$COMMIT_HASH -X $PACKAGE/common/hugo.buildDate=$BUILD_DATE"
+var ldflags = "-extldflags '-static' -s -w -X $PACKAGE/common/hugo.commitHash=$COMMIT_HASH -X $PACKAGE/common/hugo.buildDate=$BUILD_DATE"
 
 // allow user to override go executable by running as GOEXE=xxx make ... on unix-like systems
 var goexe = "go"
