@@ -25,8 +25,8 @@ jobs:
       run: chmod +x ./hugo-extended && ./hugo-extended version
     - uses: actions/upload-artifact@master
       with:
-        name: hugo-extended
-        path: ./hugo-extended_Linux-64bit
+        name: hugo-extended_Linux-64bit
+        path: ./hugo-extended
     - name: Create release
       id: create_release
       uses: actions/create-release@master
