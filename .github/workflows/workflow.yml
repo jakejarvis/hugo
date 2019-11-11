@@ -13,8 +13,8 @@ jobs:
     - uses: actions/setup-go@master
       with:
         go-version: '1.13'
-    - run: go env 
-    - run: strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
+    # - run: go env 
+    # - run: strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
     - name: Build binary
       run: |
         go get -u github.com/magefile/mage
@@ -27,3 +27,22 @@ jobs:
       with:
         name: hugo-extended
         path: ./hugo-extended
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload release asset
+      uses: actions/upload-release-asset@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}  # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./hugo-extended
+        asset_name: hugo-extended
+        asset_content_type: application/octet-stream
