@@ -22,27 +22,27 @@ jobs:
         HUGO_BUILD_TAGS=extended $(go env GOPATH)/bin/mage install
         cp $(go env GOPATH)/bin/hugo ./hugo-extended
     - name: Make sure binary's OK
-      run: ./hugo-extended version
+      run: chmod +x ./hugo-extended && ./hugo-extended version
     - uses: actions/upload-artifact@master
       with:
         name: hugo-extended
-        path: ./hugo-extended
+        path: ./hugo-extended_Linux-64bit
     - name: Create release
       id: create_release
       uses: actions/create-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: ${{ github.sha }}
+        release_name: Release ${{ github.sha }}
         draft: false
         prerelease: false
-    - name: Upload release asset
+    - name: Upload release
       uses: actions/upload-release-asset@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}  # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        upload_url: ${{ steps.create_release.outputs.upload_url }}   # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
         asset_path: ./hugo-extended
-        asset_name: hugo-extended
+        asset_name: hugo-extended_Linux-64bit
         asset_content_type: application/octet-stream
