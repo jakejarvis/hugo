@@ -23,7 +23,6 @@ jobs:
       run: |
         eval "$(gimme 1.13)"
         go version
-        cd /home/runner/work/hugo-custom/hugo-custom
-        ls
+        find / -name "magefile.go"
     #- run: go version
     #- run: go env GOPATH
