@@ -10,27 +10,9 @@ jobs:
     runs-on: ubuntu-latest   # for compatibility
     container:
       image: docker://netlify/build:xenial
+      options: -u 0
       volumes:
         - /github/home:/opt/buildhome
         - /home/runner/work/hugo-custom/hugo-custom:/opt/repo
     steps:
-    - uses: actions/checkout@master
-    #- uses: actions/setup-go@master
-    #  with:
-    #    go-version: '1.13'
-    # - run: go env 
-    # - run: strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
-    - name: Gimme Go 1.13
-      run: eval $(gimme 1.13)
-    - name: Build binary
-      run: |
-        go get -u github.com/magefile/mage
-        $(go env GOPATH)/bin/mage hugo
-        HUGO_BUILD_TAGS=extended $(go env GOPATH)/bin/mage install
-        cp $(go env GOPATH)/bin/hugo ./hugo-extended
-    - name: Make sure binary's OK
-      run: chmod +x ./hugo-extended && ./hugo-extended version
-    - uses: actions/upload-artifact@master
-      with:
-        name: hugo-extended_Linux-64bit
-        path: ./hugo-extended
+    - run: whoami
