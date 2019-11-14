@@ -10,14 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://netlify/build:xenial
-      #options: --user root
+      env:
+        GO_VERSION: 1.13
+      options: --user root
       volumes:
       - /github/home:/opt/buildhome
       - /home/runner/work/hugo-custom/hugo-custom:/opt/repo
     steps:
+    - run: mkdir -p /opt/repo
     - uses: actions/checkout@master
+      with:
+        path: /opt/repo
     - run: whoami
-    #- name: Gimme Go 1.13
-    #  run: eval $(gimme 1.13)
+    - name: Gimme Go 1.13
+      run: |
+        eval "$(gimme 1.13)"
     #- run: go version
     #- run: go env GOPATH
