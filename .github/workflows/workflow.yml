@@ -7,12 +7,13 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest   # for compatibility
+    runs-on: ubuntu-latest
     container:
       image: docker://netlify/build:xenial
-      options: -u 0
+      options: --user root
       volumes:
-        - /github/home:/opt/buildhome
-        - /home/runner/work/hugo-custom/hugo-custom:/opt/repo
+      - /github/home:/opt/buildhome
+      - /home/runner/work/hugo-custom/hugo-custom:/opt/repo
     steps:
     - run: whoami
+    - run: eval $(gimme 1.13)
