@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest   # for compatibility
     container:
       image: docker://netlify/build:xenial
+      volumes:
+        - /github/home:/opt/buildhome
+        - /home/runner/work/hugo-custom/hugo-custom:/opt/repo
     steps:
     - uses: actions/checkout@master
     #- uses: actions/setup-go@master
