@@ -24,5 +24,7 @@ jobs:
         eval "$(gimme 1.13)"
         go version
         find / -name "magefile.go"
+        cd /__w/hugo-custom/hugo-custom
+        ls
     #- run: go version
     #- run: go env GOPATH
