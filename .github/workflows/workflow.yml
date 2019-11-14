@@ -7,7 +7,9 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-16.04   # for compatibility
+    runs-on: ubuntu-latest   # for compatibility
+    container:
+      image: docker://netlify/build:xenial
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-go@master
@@ -27,22 +29,3 @@ jobs:
       with:
         name: hugo-extended_Linux-64bit
         path: ./hugo-extended
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v0.53-DEV
-        release_name: v0.53-DEV
-        draft: false
-        prerelease: false
-    - name: Upload release
-      uses: actions/upload-release-asset@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}   # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./hugo-extended
-        asset_name: hugo-extended_Linux-64bit
-        asset_content_type: application/octet-stream
